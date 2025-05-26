@@ -17,7 +17,8 @@ hooks.add('tableFilterModule', {
     const { refElem, refTableFilter } = $xeTable.getRefMaps()
     const { computeFilterOpts, computeMouseOpts } = $xeTable.getComputeMaps()
 
-    // 确认筛选
+    // 确认筛选操作
+    // 将临时选中状态同步到正式筛选配置
     const handleFilterConfirmFilter = (evnt: Event | null) => {
       const { filterStore } = reactData
       filterStore.options.forEach((option: any) => {
@@ -27,6 +28,7 @@ hooks.add('tableFilterModule', {
     }
 
     // （单选）筛选发生改变
+    // 每次只能选择一个筛选条件
     const changeRadioOption = (evnt: Event, checked: boolean, item: any) => {
       const { filterStore } = reactData
       filterStore.options.forEach((option: any) => {
@@ -38,6 +40,7 @@ hooks.add('tableFilterModule', {
     }
 
     // （多选）筛选发生改变
+    // 支持同时选择多个筛选条件
     const changeMultipleOption = (evnt: Event, checked: boolean, item: any) => {
       item._checked = checked
       $xeTable.checkFilterOptions()

@@ -10701,7 +10701,9 @@ export default defineComponent({
             renderViewport()
           ]
         : [
+            // 真实table
             renderViewport(),
+            // 纵向滚动条
             renderScrollY()
           ])
     }
@@ -10772,6 +10774,7 @@ export default defineComponent({
         h('div', {
           class: 'vxe-table-slots'
         }, slots.default ? slots.default({}) : []),
+        // 用于size 声明 切换 size 获取 clientHeight 用
         h('div', {
           ref: refVarElem,
           class: 'vxe-table-vars'
@@ -10794,7 +10797,9 @@ export default defineComponent({
           class: 'vxe-table--render-wrapper'
         }, scrollbarXToTop
           ? [
+              // 横向滚动条
               renderScrollX(),
+              // table组件
               renderBody()
             ]
           : [
