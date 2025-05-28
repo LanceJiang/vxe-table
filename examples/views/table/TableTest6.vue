@@ -1,5 +1,6 @@
 <template>
   <div>
+    vxe-table
     <vxe-toolbar ref="toolbarRef" custom export import></vxe-toolbar>
 
     <vxe-table

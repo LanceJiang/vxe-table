@@ -788,6 +788,7 @@ export default defineComponent({
 
       const ons: Record<string, any> = {
         onScroll (evnt: Event) {
+          // console.warn('table body scroll 调用 triggerBodyScrollEvent', evnt)
           $xeTable.triggerBodyScrollEvent(evnt, fixedType)
         }
       }

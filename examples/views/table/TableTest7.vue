@@ -1,5 +1,6 @@
 <template>
   <div>
+    vxe-table
     <vxe-button @click="insertEvent">新增</vxe-button>
     <vxe-table
       border

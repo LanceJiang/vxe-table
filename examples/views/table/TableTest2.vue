@@ -1,5 +1,6 @@
 <template>
   <div>
+    vxe-table
     <vxe-button @click="exportEvent">导出</vxe-button>
     <vxe-toolbar ref="toolbarRef" custom export import></vxe-toolbar>
 

@@ -13,7 +13,7 @@
       <vxe-button @click="loadDataAndColumns(1000000, 20)">100w行20列</vxe-button>
     </p>
     <p>
-      <vxe-button @click="loadDataAndColumns(5, 10)">50行100列</vxe-button>
+      <vxe-button @click="loadDataAndColumns(50, 100)">50行100列</vxe-button>
       <vxe-button @click="loadDataAndColumns(80, 1000)">80行1k列</vxe-button>
       <vxe-button @click="loadDataAndColumns(100, 5000)">100行5k列</vxe-button>
       <vxe-button @click="loadDataAndColumns(150, 10000)">200行1w列</vxe-button>

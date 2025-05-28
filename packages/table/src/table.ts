@@ -1488,6 +1488,7 @@ export default defineComponent({
         }
         if (type === 'expand') {
           if (expandColumn) {
+            // column.type="expand" 重复了，这可能会导致某些功能无法使用
             warnLog('vxe.error.colRepet', ['type', type])
           }
           if (!expandColumn) {
@@ -3327,6 +3328,7 @@ export default defineComponent({
     }
 
     const parseColumns = (isReset: boolean) => {
+      console.error('parseColumns', isReset)
       // const { showOverflow } = props
       // const rowOpts = computeRowOpts.value
       const leftList: VxeTableDefines.ColumnInfo[] = []
@@ -3462,6 +3464,7 @@ export default defineComponent({
     }
 
     const handleColumn = (collectColumn: VxeTableDefines.ColumnInfo[]) => {
+      // console.error('handleColumn 内部有调用 parseColumns')
       const expandOpts = computeExpandOpts.value
       internalData.collectColumn = collectColumn
       const tableFullColumn = getColumnList(collectColumn)
@@ -9739,6 +9742,7 @@ export default defineComponent({
           type: 'body',
           fixed: fixedType
         })
+        // triggerScrollYEvent && handleScrollEvent(table)
       },
       triggerHeaderScrollEvent (evnt, fixedType) {
         const { scrollXLoad } = reactData
@@ -9819,6 +9823,7 @@ export default defineComponent({
         })
       },
       triggerBodyWheelEvent (evnt) {
+        console.error('滚轮事件')
         const { target, deltaY, deltaX, shiftKey } = evnt
         if (target && /^textarea$/i.test((target as HTMLElement).tagName)) {
           return
@@ -9916,6 +9921,7 @@ export default defineComponent({
             setScrollTop(leftScrollElem, currTopNum)
             setScrollTop(rightScrollElem, currTopNum)
             setScrollTop(rowExpandEl, currTopNum)
+            // 滚轮触发 的 $xeTable.triggerScrollYEvent(evnt) $xeTable.handleScrollEvent
             if (scrollYLoad) {
               $xeTable.triggerScrollYEvent(evnt)
             }
@@ -9981,6 +9987,7 @@ export default defineComponent({
       triggerVirtualScrollYEvent (evnt) {
         const { scrollYLoad } = reactData
         const { elemStore, inWheelScroll, lastScrollLeft, inHeaderScroll, inBodyScroll, inFooterScroll } = internalData
+        // console.log('triggerVirtualScrollYEvent.1', internalData, 'internalData', scrollYLoad, 'scrollYLoad')
         if (inHeaderScroll || inBodyScroll || inFooterScroll) {
           return
         }
@@ -10006,6 +10013,8 @@ export default defineComponent({
         setScrollTop(leftScrollElem, scrollTop)
         setScrollTop(rightScrollElem, scrollTop)
         setScrollTop(rowExpandEl, scrollTop)
+        // console.log('triggerVirtualScrollYEvent.2', scrollTop, scrollLeft, 'scrollYLoad 虚拟', scrollYLoad)
+        // debugger triggerScrollYEvent && handleScrollEvent(table)
         if (scrollYLoad) {
           $xeTable.triggerScrollYEvent(evnt)
         }
@@ -11016,6 +11025,7 @@ export default defineComponent({
       staticColumnFlag.value++
     })
     watch(staticColumnFlag, () => {
+      console.error('staticColumnFlag', staticColumnFlag)
       handleColumn(XEUtils.clone(reactData.staticColumns))
     })
 

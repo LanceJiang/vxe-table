@@ -9,7 +9,7 @@
       <vxe-button @click="loadData(10000)">加载1w条</vxe-button>
       <vxe-button @click="loadData(30000)">加载3w条</vxe-button>
     </p>
-
+    vxe-table
     <vxe-table
       border
       round

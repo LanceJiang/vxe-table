@@ -1,5 +1,6 @@
 <template>
   <div>
+    vxe-table
     <vxe-table
       border
       stripe
